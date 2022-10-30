@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-k8s-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      name: client
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: react-k8s
+          image: komildeveloper/react-k8s
+          ports:
+            - containerPort: 3000
